@@ -12,26 +12,13 @@
   </head>
 
   <body>
-    <div class="container text-center">
-      <div class="row align-items-start">
-        <div class="col">
-          One of three columns
-        </div>
-        <div class="col">
-          One of three columns
-        </div>
-        <div class="col">
-          One of three columns
-        </div>
-      </div>
-    </div>
     <div>
       <span>temperature</span>
       <input type="number" id="temperature">
       <span>pressure</span>
       <input type="number" id="pressure">
       <div id="ctp-results"></div>
-      <button py-click="ctp(temperature, pressure)" id="ctp">CTP using STD</button>
+      <button py-click="ctp()" id="ctp">CTP using STD</button>
     </div>
     <div id="manual-write"></div>
     <button py-click="write_to_page()" id="manual">Say Hello</button>
@@ -40,18 +27,10 @@
     <button py-click="print_to_page()" id="print">Print Things!</button>
 
     <py-script>
-    def ctp(temp,pressure):
+    def ctp():
+      temp = Element('temperature').element.value
+      press = Element('pressure').element.value
       display(temp+pressure, target="ctp-results")
-      
-    def write_to_page():
-      manual_div = Element("manual-write")
-      manual_div.element.innerHTML = "<p><b>Hello World</b></p>"
-
-    def display_to_div():
-      display("I display things!", target="display-write")
-
-    def print_to_page():
-      print("I print things!")
     </py-script>
   </body>
 </html>

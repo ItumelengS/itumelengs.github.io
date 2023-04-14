@@ -27,7 +27,11 @@
     </div>
     <div>
       <span>temperature</span>
-      <input type="number">
+      <input type="number" id="temperature">
+      <span>pressure</span>
+      <input type="number" id="pressure">
+      <div id="ctp-results"></div>
+      <button py-click="ctp(temperature, pressure)" id="ctp">CTP using STD</button>
     </div>
     <div id="manual-write"></div>
     <button py-click="write_to_page()" id="manual">Say Hello</button>
@@ -36,6 +40,9 @@
     <button py-click="print_to_page()" id="print">Print Things!</button>
 
     <py-script>
+    def ctp(temp,pressure):
+      display(temp+pressure, target="ctp-results")
+      
     def write_to_page():
       manual_div = Element("manual-write")
       manual_div.element.innerHTML = "<p><b>Hello World</b></p>"
